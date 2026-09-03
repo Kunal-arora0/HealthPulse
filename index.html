@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthPulse | Indian Gym Fitness & Nutrition Tracker</title>
+  <meta name="description" content="High-performance Indian fitness app tracking gym workouts (PPL splits, volume, 1RM, rest timers) and authentic Indian nutrition (ICMR-NIN verified, macros, protein boosters).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/variables.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <a href="#" class="brand-container">
+      <div class="brand-logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+          <line x1="6" y1="1" x2="6" y2="4"></line>
+          <line x1="10" y1="1" x2="10" y2="4"></line>
+          <line x1="14" y1="1" x2="14" y2="4"></line>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>Health<span>Pulse</span></h1>
+        <div class="brand-subtitle">Gym & Indian Nutrition OS</div>
+      </div>
+    </a>
+
+    <!-- Header Stats & Badges -->
+    <div class="header-stats">
+      <div class="stat-pill streak" id="streakBadge" title="Gym Consistency Streak">
+        <span>🔥</span>
+        <span id="streakCountText">5 Day Streak</span>
+      </div>
+      <div class="stat-pill calories-pill" id="calBudgetBadge" title="Calorie Target">
+        <span>🎯</span>
+        <span id="headerCalBudget">2,200 kcal</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="app-container">
+
+    <!-- Top View Switcher Navigation -->
+    <nav class="tab-navigation" aria-label="Main Sections">
+      <button class="tab-btn active" id="tabGymWorkouts" data-view="viewGymWorkouts">
+        <span>🏋️</span> Gym Workouts
+      </button>
+      <button class="tab-btn" id="tabNutrition" data-view="viewNutrition">
+        <span>🍛</span> Indian Nutrition & Macros
+      </button>
+    </nav>
+
+    <!-- =========================================================================
+         VIEW 1: GYM WORKOUTS (Push / Pull / Legs, Tonnage, 1RM, Sets/Reps)
+         ========================================================================= -->
+    <section class="app-view active" id="viewGymWorkouts" aria-label="Gym Workout Tracker">
+      
+      <div class="section-grid">
+        
+        <!-- Left / Primary Column: Active Workout Session -->
+        <div class="workout-main-panel">
+
+          <!-- Workout Split Selector Chips -->
+          <div class="split-selector-bar" role="tablist" aria-label="Workout Splits">
+            <button class="split-chip active" data-split="Push" id="splitPushBtn">
+              <span>🔥</span> Push Day (Chest / Shoulders / Triceps)
+            </button>
+            <button class="split-chip" data-split="Pull" id="splitPullBtn">
+              <span>⚡</span> Pull Day (Back / Biceps / Rear Delts)
+            </button>
+            <button class="split-chip" data-split="Legs" id="splitLegsBtn">
+              <span>🦵</span> Leg Day (Quads / Hamstrings / Calves)
+            </button>
+          </div>
+
+          <!-- Active Session Exercise List -->
+          <div class="glass-card">
+            <div class="card-header">
+              <div>
+                <h2 class="card-title" id="activeSplitTitle">Push Day Workout</h2>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+                  Log your sets, reps & weight. Finish each set to trigger your rest interval.
+                </p>
+              </div>
+              <button class="btn-quick-add" id="btnAddCustomExerciseBtn">
+                + Add Exercise
+              </button>
+            </div>
+
+            <!-- Exercises Container (Rendered dynamically via GymExercise model) -->
+            <div class="exercise-list" id="exerciseListContainer">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right / Secondary Column: Gym Analytics & Quick Rest Controller -->
+        <aside class="workout-sidebar">
+          
+          <!-- Daily Gym Volume / Tonnage Card -->
+          <div class="glass-card" style="margin-bottom: var(--space-lg);">
+            <div class="card-header">
+              <h3 class="card-title">
+                <span>⚡</span> Workout Volume
+              </h3>
+              <span class="badge badge-saffron" id="tonnageBadge">Active Session</span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: var(--space-sm); text-align: center; padding: var(--space-md) 0;">
+              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Total Weight Lifted</span>
+              <div style="font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: var(--text-primary); line-height: 1;">
+                <span id="totalTonnageNumber">0</span> <span style="font-size: 1.1rem; color: var(--accent-saffron);">kg</span>
+              </div>
+              <span style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px;" id="setsCompletedCountText">
+                0 / 0 Sets Completed
+              </span>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <span style="color: var(--text-muted);">Estimated Burn:</span>
+              <span style="font-weight: 700; color: #34D399;" id="estCalBurnText">0 kcal</span>
+            </div>
+          </div>
+
+          <!-- Quick Rest Timer Launcher -->
+          <div class="glass-card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <span>⏱️</span> Rest Interval
+              </h3>
+              <span class="badge badge-emerald">Audio Ready</span>
+            </div>
+
+            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: var(--space-md);">
+              Trigger quick recovery timer between heavy sets. Sound will chime on 0s.
+            </p>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+              <button class="preset-btn" style="padding: 10px;" onclick="window.HealthPulseApp.startRestTimer(30)">30s Quick Rest</button>
+              <button class="preset-btn" style="padding: 10px;" onclick="window.HealthPulseApp.startRestTimer(60)">60s Standard</button>
+              <button class="preset-btn" style="padding: 10px;" onclick="window.HealthPulseApp.startRestTimer(90)">90s Hypertrophy</button>
+              <button class="preset-btn" style="padding: 10px;" onclick="window.HealthPulseApp.startRestTimer(120)">120s Heavy Lift</button>
+            </div>
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- =========================================================================
+         VIEW 2: INDIAN NUTRITION & CALORIE TRACKER
+         ========================================================================= -->
+    <section class="app-view" id="viewNutrition" aria-label="Indian Food & Calorie Tracker">
+      
+      <!-- Calorie & Macro Hero Overview -->
+      <div class="glass-card calorie-hero-card" style="margin-bottom: var(--space-xl);">
+        
+        <!-- Circular SVG Calorie Ring -->
+        <div class="ring-container">
+          <svg class="ring-svg" viewBox="0 0 160 160">
+            <circle class="ring-bg" cx="80" cy="80" r="68"></circle>
+            <circle class="ring-fill ring-calories" id="calorieSvgCircle" cx="80" cy="80" r="68" stroke-dasharray="427.25" stroke-dashoffset="427.25"></circle>
+          </svg>
+          <div class="ring-center-text">
+            <span class="ring-center-value" id="caloriesRemainingNumber">2,200</span>
+            <span class="ring-center-label">kcal left</span>
+          </div>
+        </div>
+
+        <!-- Macro Breakdown Progress Bars -->
+        <div class="macro-grid">
+          
+          <!-- Protein -->
+          <div class="macro-item">
+            <div class="macro-item-header">
+              <span class="macro-name">🥩 Protein (Target: <span id="targetProteinVal">150</span>g)</span>
+              <span class="macro-target"><span id="consumedProteinVal">0</span>g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill fill-protein" id="proteinBarFill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Carbs -->
+          <div class="macro-item">
+            <div class="macro-item-header">
+              <span class="macro-name">🍚 Carbs (Target: <span id="targetCarbsVal">220</span>g)</span>
+              <span class="macro-target"><span id="consumedCarbsVal">0</span>g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill fill-carbs" id="carbsBarFill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <!-- Fats -->
+          <div class="macro-item">
+            <div class="macro-item-header">
+              <span class="macro-name">🥑 Fats (Target: <span id="targetFatsVal">60</span>g)</span>
+              <span class="macro-target"><span id="consumedFatsVal">0</span>g</span>
+            </div>
+            <div class="macro-bar-track">
+              <div class="macro-bar-fill fill-fats" id="fatsBarFill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Desi Protein Gap Closer / Booster Banner -->
+      <div class="booster-banner" id="desiBoosterBanner">
+        <div class="booster-content">
+          <h3><span>💡</span> Desi Protein Gap Closer</h3>
+          <p id="boosterNoticeText">You need more protein to hit your 150g gym goal. Tap any Indian booster to quick log:</p>
+        </div>
+        <div class="booster-chips" id="boosterChipsContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Meal Buckets (Breakfast, Lunch, Pre/Post Workout, Dinner) -->
+      <div class="meal-bucket-list" id="mealBucketsContainer">
+        
+        <!-- Breakfast -->
+        <div class="meal-bucket" data-meal="Breakfast">
+          <div class="meal-bucket-header">
+            <div class="meal-bucket-title">
+              <span>🌅</span> Breakfast
+            </div>
+            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Breakfast')">
+              + Log Food
+            </button>
+          </div>
+          <div class="meal-items-list" id="mealItemsBreakfast">
+            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
+          </div>
+        </div>
+
+        <!-- Lunch -->
+        <div class="meal-bucket" data-meal="Lunch">
+          <div class="meal-bucket-header">
+            <div class="meal-bucket-title">
+              <span>☀️</span> Lunch (Indian Staples)
+            </div>
+            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Lunch')">
+              + Log Food
+            </button>
+          </div>
+          <div class="meal-items-list" id="mealItemsLunch">
+            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
+          </div>
+        </div>
+
+        <!-- Pre / Post Workout -->
+        <div class="meal-bucket" data-meal="PrePostWorkout">
+          <div class="meal-bucket-header">
+            <div class="meal-bucket-title">
+              <span>⚡</span> Pre & Post Workout Fuel
+            </div>
+            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('PrePostWorkout')">
+              + Log Food
+            </button>
+          </div>
+          <div class="meal-items-list" id="mealItemsPrePostWorkout">
+            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
+          </div>
+        </div>
+
+        <!-- Dinner -->
+        <div class="meal-bucket" data-meal="Dinner">
+          <div class="meal-bucket-header">
+            <div class="meal-bucket-title">
+              <span>🌙</span> Dinner
+            </div>
+            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Dinner')">
+              + Log Food
+            </button>
+          </div>
+          <div class="meal-items-list" id="mealItemsDinner">
+            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       POPUP 1: REST-BETWEEN-SETS TIMER (Audio + Interval)
+       ========================================================================= -->
+  <div class="rest-timer-modal" id="restTimerModal" role="dialog" aria-modal="true">
+    <div class="timer-header">
+      <h4><span>⏱️</span> Rest Interval</h4>
+      <button class="timer-close-btn" id="closeRestTimerBtn" aria-label="Close timer">&times;</button>
+    </div>
+
+    <div class="timer-display-group">
+      <div class="timer-seconds-big" id="timerSecondsDisplay">60</div>
+    </div>
+
+    <div class="timer-preset-row">
+      <button class="preset-btn" onclick="window.HealthPulseApp.setRestTimerDuration(30)">30s</button>
+      <button class="preset-btn active" onclick="window.HealthPulseApp.setRestTimerDuration(60)">60s</button>
+      <button class="preset-btn" onclick="window.HealthPulseApp.setRestTimerDuration(90)">90s</button>
+      <button class="preset-btn" onclick="window.HealthPulseApp.setRestTimerDuration(120)">120s</button>
+    </div>
+
+    <div class="timer-controls">
+      <button class="btn-timer-action btn-timer-play" id="btnToggleTimer">
+        <span id="timerPlayIcon">⏸️</span> <span id="timerPlayText">Pause</span>
+      </button>
+      <button class="btn-timer-action btn-timer-skip" id="btnSkipTimer">
+        ⏭️ Skip
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: FOOD SEARCH & ICMR-NIN / OPEN FOOD FACTS LOOKUP
+       ========================================================================= -->
+  <div class="modal-overlay" id="foodSearchModal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="card-title">
+          <span>🔍</span> Search Indian Gym Diet
+        </h3>
+        <button class="timer-close-btn" id="closeFoodModalBtn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="search-input-box">
+          <span>🔎</span>
+          <input type="text" id="foodSearchInput" placeholder="Search roti, dal, paneer, eggs, sattu, whey...">
+        </div>
+
+        <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+          <span class="badge badge-emerald" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('All')">All</span>
+          <span class="badge badge-saffron" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('High-Protein')">High-Protein</span>
+          <span class="badge badge-cyan" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Desi Staple')">Desi Staples</span>
+          <span class="badge badge-saffron" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Snacks')">Snacks</span>
+        </div>
+
+        <!-- Food items list -->
+        <div class="search-results-list" id="foodSearchResultsContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: ADD CUSTOM GYM EXERCISE
+       ========================================================================= -->
+  <div class="modal-overlay" id="addExerciseModal" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="card-title">
+          <span>🏋️‍♂️</span> Add Gym Exercise
+        </h3>
+        <button class="timer-close-btn" id="closeExerciseModalBtn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="addExerciseForm" onsubmit="event.preventDefault(); window.HealthPulseApp.saveNewExercise();">
+          
+          <div class="form-group">
+            <label for="newExName">Exercise Name</label>
+            <input type="text" class="form-control" id="newExName" placeholder="e.g. Incline Dumbbell Fly" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newExSplit">Workout Split</label>
+              <select class="form-control" id="newExSplit">
+                <option value="Push">Push Day</option>
+                <option value="Pull">Pull Day</option>
+                <option value="Legs">Leg Day</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="newExMuscle">Target Muscle</label>
+              <input type="text" class="form-control" id="newExMuscle" placeholder="e.g. Chest, Lats, Quads" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="newExType">Exercise Type (OOP Inheritance Model)</label>
+            <select class="form-control" id="newExType">
+              <option value="CompoundLift">Compound Lift (Multiple joints, 1RM Engine)</option>
+              <option value="IsolationLift">Isolation Lift (Single joint, hypertrophy pump)</option>
+            </select>
+          </div>
+
+          <div class="form-row-3">
+            <div class="form-group">
+              <label for="newExSets">Sets</label>
+              <input type="number" class="form-control" id="newExSets" value="3" min="1" max="15" required>
+            </div>
+
+            <div class="form-group">
+              <label for="newExReps">Reps</label>
+              <input type="number" class="form-control" id="newExReps" value="10" min="1" max="50" required>
+            </div>
+
+            <div class="form-group">
+              <label for="newExWeight">Weight (kg)</label>
+              <input type="number" class="form-control" id="newExWeight" value="20" min="0" step="0.5" required>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn-secondary-action" id="cancelExerciseModalBtn">Cancel</button>
+            <button type="submit" class="btn-primary-action">+ Add to Workout</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts (Modern Vanilla JS ES Modules) -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
