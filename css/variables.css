@@ -1,0 +1,62 @@
+/* ==========================================================================
+   HealthPulse (स्वास्थ्य Pulse) - Design System Tokens & CSS Variables
+   Theme: Gym Obsidian, Energetic Saffron, Ayurvedic Emerald & Cyan
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Color Palette - Dark Obsidian Gym Theme */
+  --bg-body: #0A0D14;
+  --bg-surface: #101522;
+  --bg-card: rgba(18, 24, 38, 0.78);
+  --bg-glass-heavy: rgba(13, 17, 27, 0.88);
+  --bg-overlay: rgba(5, 8, 15, 0.82);
+
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.16);
+
+  /* Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Accent Colors */
+  --accent-saffron: #FF6B00;
+  --accent-saffron-dark: #E05D00;
+  --accent-saffron-glow: rgba(255, 107, 0, 0.35);
+  --accent-emerald: #10B981;
+  --accent-cyan: #06B6D4;
+  --accent-danger: #EF4444;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow-saffron: 0 0 24px rgba(255, 107, 0, 0.25);
+
+  /* Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 36px;
+  --space-2xl: 48px;
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
