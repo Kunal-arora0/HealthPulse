@@ -1,0 +1,122 @@
+[
+  {
+    "id": "push_1",
+    "name": "Barbell Bench Press",
+    "split": "Push",
+    "targetMuscle": "Chest",
+    "type": "CompoundLift",
+    "sets": 4,
+    "reps": 8,
+    "weightKg": 70
+  },
+  {
+    "id": "push_2",
+    "name": "Incline Dumbbell Press",
+    "split": "Push",
+    "targetMuscle": "Upper Chest",
+    "type": "CompoundLift",
+    "sets": 3,
+    "reps": 10,
+    "weightKg": 24
+  },
+  {
+    "id": "push_3",
+    "name": "Overhead Barbell Press",
+    "split": "Push",
+    "targetMuscle": "Shoulders",
+    "type": "CompoundLift",
+    "sets": 3,
+    "reps": 8,
+    "weightKg": 45
+  },
+  {
+    "id": "push_4",
+    "name": "Tricep Rope Pushdown",
+    "split": "Push",
+    "targetMuscle": "Triceps",
+    "type": "IsolationLift",
+    "sets": 3,
+    "reps": 12,
+    "weightKg": 22.5
+  },
+  {
+    "id": "pull_1",
+    "name": "Barbell Deadlift",
+    "split": "Pull",
+    "targetMuscle": "Lower Back & Hamstrings",
+    "type": "CompoundLift",
+    "sets": 4,
+    "reps": 6,
+    "weightKg": 100
+  },
+  {
+    "id": "pull_2",
+    "name": "Barbell Bent-Over Row",
+    "split": "Pull",
+    "targetMuscle": "Lats & Mid-Back",
+    "type": "CompoundLift",
+    "sets": 4,
+    "reps": 8,
+    "weightKg": 60
+  },
+  {
+    "id": "pull_3",
+    "name": "Lat Pulldown",
+    "split": "Pull",
+    "targetMuscle": "Lats",
+    "type": "CompoundLift",
+    "sets": 3,
+    "reps": 10,
+    "weightKg": 55
+  },
+  {
+    "id": "pull_4",
+    "name": "Dumbbell Bicep Curl",
+    "split": "Pull",
+    "targetMuscle": "Biceps",
+    "type": "IsolationLift",
+    "sets": 3,
+    "reps": 12,
+    "weightKg": 14
+  },
+  {
+    "id": "legs_1",
+    "name": "Barbell Back Squat",
+    "split": "Legs",
+    "targetMuscle": "Quads & Glutes",
+    "type": "CompoundLift",
+    "sets": 4,
+    "reps": 8,
+    "weightKg": 90
+  },
+  {
+    "id": "legs_2",
+    "name": "Romanian Deadlift (RDL)",
+    "split": "Legs",
+    "targetMuscle": "Hamstrings",
+    "type": "CompoundLift",
+    "sets": 3,
+    "reps": 10,
+    "weightKg": 70
+  },
+  {
+    "id": "legs_3",
+    "name": "Leg Press",
+    "split": "Legs",
+    "targetMuscle": "Quads",
+    "type": "CompoundLift",
+    "sets": 3,
+    "reps": 12,
+    "weightKg": 140
+  },
+  {
+    "id": "legs_4",
+    "name": "Standing Calf Raises",
+    "split": "Legs",
+    "targetMuscle": "Calves",
+    "type": "IsolationLift",
+    "sets": 4,
+    "reps": 15,
+    "weightKg": 50
+  }
+]
