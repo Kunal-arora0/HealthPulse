@@ -1,4 +1,4 @@
-# HealthPulse (स्वास्थ्य Pulse) 🏋️‍♂️🍛
+# HealthPulse 🏋️‍♂️🍛
 
 > High-Performance Indian Gym Fitness & Nutrition Operating System built with Vanilla JavaScript, HTML5, and Modern CSS.
 
