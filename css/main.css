@@ -131,6 +131,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  overflow-x: hidden;
 }
 
 /* Nav Tabs */
@@ -174,12 +175,25 @@ body {
 /* Section Grid Layout */
 .section-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: var(--space-xl);
+  grid-template-columns: 1fr minmax(0, 340px);
+  gap: var(--space-lg);
   align-items: start;
+  overflow: hidden;
 }
 
-@media (max-width: 1080px) {
+/* Sidebar never overflows its column */
+.workout-sidebar {
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .section-grid {
+    grid-template-columns: 1fr minmax(0, 300px);
+  }
+}
+
+@media (max-width: 900px) {
   .section-grid {
     grid-template-columns: 1fr;
   }

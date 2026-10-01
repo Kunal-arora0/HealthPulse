@@ -1,4 +1,4 @@
-function FoodItem(id, name, calories, protein, carbs, fats, servingUnit, category, diet, isDesiBooster = false) {
+function FoodItem(id, name, calories, protein, carbs, fats, servingUnit, servingGrams, category, diet, isDesiBooster = false, inputType = 'grams', countUnit = null) {
     this.id = id;
     this.name = name;
     this.calories = calories;
@@ -6,9 +6,12 @@ function FoodItem(id, name, calories, protein, carbs, fats, servingUnit, categor
     this.carbs = carbs;
     this.fats = fats;
     this.servingUnit = servingUnit;
+    this.servingGrams = servingGrams || 100;
     this.category = category;
     this.diet = diet;
     this.isDesiBooster = isDesiBooster;
+    this.inputType = inputType;   // 'count' | 'grams'
+    this.countUnit = countUnit;   // e.g. 'roti', 'egg white', 'scoop'
 }
 
 FoodItem.prototype.isHighProtein = function () {
@@ -19,8 +22,8 @@ FoodItem.prototype.getCaloriesForServings = function (servings) {
     return this.calories * servings;
 };
 
-function DesiBoosterItem(id, name, calories, protein, carbs, fats, servingUnit, category, diet) {
-    FoodItem.call(this, id, name, calories, protein, carbs, fats, servingUnit, category, diet, true);
+function DesiBoosterItem(id, name, calories, protein, carbs, fats, servingUnit, servingGrams, category, diet) {
+    FoodItem.call(this, id, name, calories, protein, carbs, fats, servingUnit, servingGrams, category, diet, true);
     this.type = "DesiBoosterItem";
 }
 

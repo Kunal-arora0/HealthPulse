@@ -22,6 +22,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--border-subtle);
@@ -904,4 +906,430 @@
 .btn-secondary-action:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Missing Exercise Card Styles (rendered by renderWorkoutView)
+   ========================================================================== */
+
+.exercise-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.exercise-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.exercise-meta {
+  font-size: 0.78rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+.sets-rep-grid {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.set-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  min-width: 60px;
+}
+
+.set-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.set-stat-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Missing Food Log & Search Styles (rendered by renderNutritionView / logFood)
+   ========================================================================== */
+
+.meal-food-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.85rem;
+}
+
+.meal-food-item:last-child {
+  border-bottom: none;
+}
+
+.meal-food-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.meal-food-macros {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.food-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.food-result-item:hover {
+  background: rgba(255, 107, 0, 0.1);
+  border-color: rgba(255, 107, 0, 0.3);
+  transform: translateX(2px);
+}
+
+.food-result-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.food-result-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.food-result-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT — fixes horizontal scroll on mobile & tablet
+   ========================================================================== */
+
+/* Prevent any element from causing horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* App container padding shrinks on smaller screens */
+@media (max-width: 768px) {
+  .app-container {
+    padding: var(--space-md) var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .app-header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  /* Hide subtitle on very small screens */
+  .brand-subtitle {
+    display: none;
+  }
+
+  /* Header stat pills — compact on mobile */
+  .stat-pill {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  /* Tab buttons — full width row on mobile */
+  .tab-navigation {
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .tab-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: var(--space-sm) var(--space-sm);
+  }
+
+  /* Split selector chips — scrollable row */
+  .split-selector-bar {
+    gap: var(--space-xs);
+  }
+
+  .split-chip {
+    font-size: 0.78rem;
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  /* Exercise card stats row wraps gracefully */
+  .sets-rep-grid {
+    gap: var(--space-sm);
+  }
+
+  .set-stat {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Calorie hero card stacks vertically */
+  .calorie-hero-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .macro-grid {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Booster banner stacks */
+  .booster-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Rest timer — full width on mobile */
+  .rest-timer-modal {
+    width: calc(100% - 32px);
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  /* Modal form rows collapse to 1 column */
+  .form-row,
+  .form-row-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .brand-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .header-stats {
+    gap: var(--space-xs);
+  }
+
+  .exercise-name {
+    font-size: 0.95rem;
+  }
+
+  .set-stat-value {
+    font-size: 1.2rem;
+  }
+
+  .ring-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .ring-center-value {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Gram-based Food Log Controls (food search modal)
+   ========================================================================== */
+
+.food-result-item {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-sm);
+}
+
+.food-log-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.gram-input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  width: 90px;
+}
+
+.gram-input {
+  width: 60px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 4px 6px;
+  outline: none;
+  text-align: right;
+}
+
+.gram-input::-webkit-outer-spin-button,
+.gram-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.gram-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-saffron);
+  padding: 0 6px 0 2px;
+  font-family: var(--font-mono);
+}
+
+.food-preview-macros {
+  flex: 1;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--accent-emerald);
+  font-weight: 600;
+  min-width: 120px;
+}
+
+/* Delete food log entry button */
+.btn-delete-food {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: var(--space-sm);
+}
+
+.btn-delete-food:hover {
+  color: #F87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+/* ==========================================================================
+   Profile Avatar Button (header)
+   ========================================================================== */
+
+.profile-avatar-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 107, 0, 0.12);
+  border: 1.5px solid rgba(255, 107, 0, 0.35);
+  color: #FFA057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.profile-avatar-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.profile-avatar-btn:hover {
+  background: rgba(255, 107, 0, 0.25);
+  border-color: var(--accent-saffron);
+  box-shadow: 0 0 12px rgba(255, 107, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Profile Targets Preview Panel
+   ========================================================================== */
+
+.profile-targets-preview {
+  background: rgba(6, 182, 212, 0.06);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.targets-preview-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38BDF8;
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.02em;
+}
+
+.targets-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+@media (max-width: 480px) {
+  .targets-preview-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.target-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xs) var(--space-sm);
+  text-align: center;
+}
+
+.target-stat span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.target-stat small {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
 }
