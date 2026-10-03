@@ -1,6 +1,6 @@
 /* ==========================================================================
-   HealthPulse (स्वास्थ्य Pulse) - Design System Tokens & CSS Variables
-   Theme: Gym Obsidian, Energetic Saffron, Ayurvedic Emerald & Cyan
+   HealthPulse - Design System Tokens & CSS Variables
+   Theme: Precision Dark Slate, Athletic Cobalt, Minimal Accents
    ========================================================================== */
 
 :root {
@@ -9,35 +9,51 @@
   --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Color Palette - Dark Obsidian Gym Theme */
-  --bg-body: #0A0D14;
-  --bg-surface: #101522;
-  --bg-card: rgba(18, 24, 38, 0.78);
-  --bg-glass-heavy: rgba(13, 17, 27, 0.88);
-  --bg-overlay: rgba(5, 8, 15, 0.82);
+  /* Color Palette - Precision Dark Slate */
+  --bg-body: #090D16;
+  --bg-surface: #0E1526;
+  --bg-card: rgba(16, 24, 40, 0.72);
+  --bg-card-hover: rgba(22, 33, 56, 0.85);
+  --bg-glass-heavy: rgba(11, 17, 30, 0.90);
+  --bg-overlay: rgba(5, 8, 15, 0.85);
 
-  /* Borders */
+  /* Crisp Borders */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.16);
+  --border-light: rgba(255, 255, 255, 0.14);
+  --border-accent: rgba(59, 130, 246, 0.35);
 
-  /* Text Colors */
-  --text-primary: #F8FAFC;
+  /* High-Contrast Typography */
+  --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
 
-  /* Accent Colors */
-  --accent-saffron: #FF6B00;
-  --accent-saffron-dark: #E05D00;
-  --accent-saffron-glow: rgba(255, 107, 0, 0.35);
-  --accent-emerald: #10B981;
-  --accent-cyan: #06B6D4;
-  --accent-danger: #EF4444;
+  /* Primary Accent - Precision Athletic Cobalt */
+  --accent-primary: #2563EB;
+  --accent-primary-hover: #1D4ED8;
+  --accent-primary-light: #60A5FA;
+  --accent-primary-subtle: rgba(37, 99, 235, 0.12);
+  --accent-primary-border: rgba(37, 99, 235, 0.28);
 
-  /* Shadows & Glows */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-glow-saffron: 0 0 24px rgba(255, 107, 0, 0.25);
+  /* Legacy alias mapped to professional cobalt */
+  --accent-saffron: #2563EB;
+  --accent-saffron-dark: #1D4ED8;
+  --accent-saffron-glow: rgba(37, 99, 235, 0.25);
+
+  /* Functional Accents */
+  --accent-emerald: #10B981;
+  --accent-emerald-subtle: rgba(16, 185, 129, 0.12);
+  --accent-amber: #F59E0B;
+  --accent-amber-subtle: rgba(245, 158, 11, 0.12);
+  --accent-cyan: #0EA5E9;
+  --accent-cyan-subtle: rgba(14, 165, 233, 0.12);
+  --accent-danger: #EF4444;
+  --accent-danger-subtle: rgba(239, 68, 68, 0.12);
+
+  /* Subtle Crisp Elevations */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.65);
+  --shadow-glow-saffron: 0 0 18px rgba(37, 99, 235, 0.25);
 
   /* Spacing Scale */
   --space-2xs: 4px;
@@ -49,10 +65,10 @@
   --space-2xl: 48px;
 
   /* Border Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-xl: 24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* Transitions */
