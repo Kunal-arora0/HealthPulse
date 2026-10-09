@@ -9,7 +9,7 @@ class AudioService {
   }
 
   init() {
-    if (!this.audioCtx) {
+    if (!this.audioCtx && typeof window !== 'undefined') {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       if (AudioContext) {
         this.audioCtx = new AudioContext();
@@ -49,6 +49,28 @@ class AudioService {
     this.playBeep(523.25, 100); // C5
     setTimeout(() => this.playBeep(659.25, 100), 120); // E5
     setTimeout(() => this.playBeep(783.99, 300), 240); // G5
+  }
+
+  // Pleasant success chime for logging food or completing actions
+  playSuccess() {
+    try {
+      this.playBeep(587.33, 90); // D5
+      setTimeout(() => this.playBeep(880.00, 150), 100); // A5
+    } catch (e) {
+      // Audio playback errors are non-critical
+    }
+  }
+
+  // Celebratory chime for PR / milestones
+  playChime() {
+    try {
+      this.playBeep(523.25, 80);  // C5
+      setTimeout(() => this.playBeep(659.25, 80), 90);  // E5
+      setTimeout(() => this.playBeep(783.99, 80), 180); // G5
+      setTimeout(() => this.playBeep(1046.50, 200), 270); // C6
+    } catch (e) {
+      // Audio playback errors are non-critical
+    }
   }
 
   // 3-2-1 countdown tick

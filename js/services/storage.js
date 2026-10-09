@@ -8,7 +8,9 @@ const STORAGE_KEYS = {
   WORKOUT_LOG: 'healthpulse_workout_log',
   USER_GOALS: 'healthpulse_user_goals',
   CUSTOM_EXERCISES: 'healthpulse_custom_exercises',
-  PRS: 'healthpulse_personal_records'
+  PRS: 'healthpulse_personal_records',
+  PROTEIN_STREAK: 'healthpulse_protein_streak',  // { 'YYYY-MM-DD': true }
+  OVERLOAD_HISTORY: 'healthpulse_overload_history'
 };
 
 export const StorageService = {
