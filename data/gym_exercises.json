@@ -4,119 +4,462 @@
     "name": "Barbell Bench Press",
     "split": "Push",
     "targetMuscle": "Chest",
+    "primaryMuscle": "Chest",
+    "secondaryMuscles": [
+      "Front Delts",
+      "Triceps"
+    ],
+    "muscleKey": "chest",
     "type": "CompoundLift",
     "sets": 4,
     "reps": 8,
-    "weightKg": 70
+    "weightKg": 70,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Lower · 1s Sternum Pause · 1s Drive · 0s Rest",
+      "peakTension": "Lengthened Range (Lower Sternum Stretch)",
+      "setupCue": "Arch upper back, retract scapulae firmly into the bench pad, plant heels and drive through quads.",
+      "checklist": [
+        "Scapulae retracted & depressed against the bench pad",
+        "Elbows tucked at a 45° angle to the torso (not flared)",
+        "Bar touches lower sternum without bouncing off the ribcage",
+        "Wrists stacked directly over elbows throughout entire press"
+      ],
+      "pitfall": "Flaring elbows to 90° or bouncing bar off chest (impinges shoulders and leaks tension)."
+    }
   },
   {
     "id": "push_2",
     "name": "Incline Dumbbell Press",
     "split": "Push",
     "targetMuscle": "Upper Chest",
+    "primaryMuscle": "Upper Chest",
+    "secondaryMuscles": [
+      "Front Delts",
+      "Triceps"
+    ],
+    "muscleKey": "chest",
     "type": "CompoundLift",
     "sets": 3,
     "reps": 10,
-    "weightKg": 24
+    "weightKg": 24,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Negative · 1s Clavicular Stretch · 1s Inward Arc",
+      "peakTension": "Lengthened Range (Upper Pec Fiber Stretch)",
+      "setupCue": "Set bench to 30° incline. Avoid steep 45° angles which shift tension to anterior delts.",
+      "checklist": [
+        "Bench set between 15° and 30° to isolate clavicular head",
+        "Dumbbells lowered until handles reach upper chest level",
+        "1-second active stretch pause at bottom",
+        "Press up in a smooth triangle path without clinking weights"
+      ],
+      "pitfall": "Setting bench too high (>45°) turning the lift into an overhead shoulder press."
+    }
   },
   {
     "id": "push_3",
     "name": "Overhead Barbell Press",
     "split": "Push",
     "targetMuscle": "Shoulders",
+    "primaryMuscle": "Shoulders",
+    "secondaryMuscles": [
+      "Triceps",
+      "Upper Chest"
+    ],
+    "muscleKey": "shoulders",
     "type": "CompoundLift",
     "sets": 3,
     "reps": 8,
-    "weightKg": 45
+    "weightKg": 45,
+    "blueprint": {
+      "tempo": "2-1-1-0",
+      "tempoDesc": "2s Controlled Descent · 1s Collarbone Touch · 1s Overhead Drive",
+      "peakTension": "Mid-Range to Lockout",
+      "setupCue": "Grip just outside shoulder width. Squeeze glutes and brace core to prevent lumbar hyperextension.",
+      "checklist": [
+        "Glutes squeezed tight to lock pelvis into neutral",
+        "Forearms perfectly vertical under the bar at start",
+        "Pull chin back as bar clears face, then push head through",
+        "Shrug slightly at apex to safely lock out subacromial space"
+      ],
+      "pitfall": "Leaning backward and turning it into an incline bench press, risking lumbar disc shear."
+    }
   },
   {
     "id": "push_4",
     "name": "Tricep Rope Pushdown",
     "split": "Push",
     "targetMuscle": "Triceps",
+    "primaryMuscle": "Triceps",
+    "secondaryMuscles": [
+      "Forearms"
+    ],
+    "muscleKey": "triceps",
     "type": "IsolationLift",
     "sets": 3,
     "reps": 12,
-    "weightKg": 22.5
+    "weightKg": 22.5,
+    "blueprint": {
+      "tempo": "3-0-1-1",
+      "tempoDesc": "3s Controlled Return · 1s Concentric Drive · 1s Flare Lockout",
+      "peakTension": "Shortened Range (Peak Lateral Head Contraction)",
+      "setupCue": "Pin elbows to the ribcage and hinge slightly forward at the hips for full tricep clearance.",
+      "checklist": [
+        "Elbows pinned to sides like hinges — zero forward elbow drift",
+        "Spread the rope apart forcefully at the bottom",
+        "1-second static peak contraction at full tricep lockout",
+        "Control the eccentric return until forearms touch biceps"
+      ],
+      "pitfall": "Using shoulder momentum and leaning body weight over the cable to push down."
+    }
+  },
+  {
+    "id": "push_5",
+    "name": "Hanging Oblique Knee Raise",
+    "split": "Push",
+    "targetMuscle": "Obliques & Core",
+    "primaryMuscle": "Obliques",
+    "secondaryMuscles": [
+      "Abs",
+      "Grip"
+    ],
+    "muscleKey": "obliques",
+    "type": "IsolationLift",
+    "sets": 3,
+    "reps": 15,
+    "weightKg": 0,
+    "blueprint": {
+      "tempo": "2-1-1-0",
+      "tempoDesc": "2s Slow Lower · 1s Top Oblique Crunch · 1s Smooth Drive",
+      "peakTension": "Shortened Contraction (Rotational Pelvic Crunch)",
+      "setupCue": "Hang with active shoulders (depress lats). Rotate knees diagonally toward the opposite armpit.",
+      "checklist": [
+        "Engage lats to eliminate full body swing or swinging momentum",
+        "Curl pelvis upward toward ribcage (don't just lift hip flexors)",
+        "Alternate sides smoothly: left obliques then right obliques",
+        "Full dead-hang reset at the bottom of each repetition"
+      ],
+      "pitfall": "Kicking legs with swinging momentum instead of curling the pelvis with the obliques."
+    }
   },
   {
     "id": "pull_1",
     "name": "Barbell Deadlift",
     "split": "Pull",
     "targetMuscle": "Lower Back & Hamstrings",
+    "primaryMuscle": "Lower Back & Hamstrings",
+    "secondaryMuscles": [
+      "Glutes",
+      "Lats",
+      "Traps"
+    ],
+    "muscleKey": "back",
     "type": "CompoundLift",
     "sets": 4,
     "reps": 6,
-    "weightKg": 100
+    "weightKg": 100,
+    "blueprint": {
+      "tempo": "2-1-1-1",
+      "tempoDesc": "2s Controlled Lower · 1s Floor Deadstop · 1s Leg Drive · 1s Glute Lock",
+      "peakTension": "Full Kinetic Chain (Erectors, Hamstrings, Glutes, Lats)",
+      "setupCue": "Bar over midfoot. Bend at hips, grip bar, pull chest tall to take the slack out before lifting.",
+      "checklist": [
+        "Pull the slack out of the barbell until clicking sound is heard",
+        "Squeeze lats tight like holding oranges in your armpits",
+        "Push the floor away through midfoot until bar passes knees",
+        "Lock out by driving glutes through — avoid leaning backward"
+      ],
+      "pitfall": "Rounding lumbar spine off the floor or hyperextending backward at lockout."
+    }
   },
   {
     "id": "pull_2",
     "name": "Barbell Bent-Over Row",
     "split": "Pull",
     "targetMuscle": "Lats & Mid-Back",
+    "primaryMuscle": "Lats & Mid-Back",
+    "secondaryMuscles": [
+      "Biceps",
+      "Rear Delts"
+    ],
+    "muscleKey": "back",
     "type": "CompoundLift",
     "sets": 4,
     "reps": 8,
-    "weightKg": 60
+    "weightKg": 60,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Lengthening Return · 1s Navel Squeeze · 1s Drive",
+      "peakTension": "Mid-Back & Lat Thickness",
+      "setupCue": "Hinge hips back to a 45° torso angle. Pull elbows back toward your pockets, not the ceiling.",
+      "checklist": [
+        "Torso locked rigid at 45° angle with neutral lumbar curve",
+        "Pull bar toward lower abdomen/navel, not upper chest",
+        "Retract and squeeze shoulder blades together at apex",
+        "Lower bar slowly under control to full lat stretch"
+      ],
+      "pitfall": "Standing too upright or using torso jerking momentum to sling the weight up."
+    }
   },
   {
     "id": "pull_3",
     "name": "Lat Pulldown",
     "split": "Pull",
     "targetMuscle": "Lats",
+    "primaryMuscle": "Lats",
+    "secondaryMuscles": [
+      "Biceps",
+      "Upper Back"
+    ],
+    "muscleKey": "back",
     "type": "CompoundLift",
     "sets": 3,
     "reps": 10,
-    "weightKg": 55
+    "weightKg": 55,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Lat Stretch · 1s Clavicle Squeeze · 1s Drive",
+      "peakTension": "Lengthened to Shortened Lat Range",
+      "setupCue": "Grip 1.5x shoulder width. Lean back 10–15° and initiate the pull by driving elbows straight down.",
+      "checklist": [
+        "Thighs wedged securely beneath the roller pads",
+        "Depress shoulder blades first before bending the elbows",
+        "Drive elbows down and inward toward back pockets",
+        "Full controlled overhead stretch at the top of each rep"
+      ],
+      "pitfall": "Swinging torso backward like a rowing machine to move excessive stack weight."
+    }
   },
   {
     "id": "pull_4",
     "name": "Dumbbell Bicep Curl",
     "split": "Pull",
     "targetMuscle": "Biceps",
+    "primaryMuscle": "Biceps",
+    "secondaryMuscles": [
+      "Forearms",
+      "Brachialis"
+    ],
+    "muscleKey": "biceps",
     "type": "IsolationLift",
     "sets": 3,
     "reps": 12,
-    "weightKg": 14
+    "weightKg": 14,
+    "blueprint": {
+      "tempo": "3-0-1-1",
+      "tempoDesc": "3s Controlled Lower · 1s Supination Drive · 1s Bicep Peak Squeeze",
+      "peakTension": "Mid-Range to Supinated Peak",
+      "setupCue": "Start neutral grip, rotate wrists outward (supinate) as you pass 90° for maximal bicep head recruitment.",
+      "checklist": [
+        "Elbows anchored fixed by your ribs — zero forward swing",
+        "Forcefully supinate wrist (pinky turned upward) at the top",
+        "1-second deliberate squeeze at the peak of contraction",
+        "Full tricep extension stretch at the bottom before rep starts"
+      ],
+      "pitfall": "Rocking shoulders and leaning back to heave dumbbells up."
+    }
+  },
+  {
+    "id": "pull_5",
+    "name": "Cable Woodchoppers",
+    "split": "Pull",
+    "targetMuscle": "Obliques & Core",
+    "primaryMuscle": "Obliques",
+    "secondaryMuscles": [
+      "Core",
+      "Shoulders"
+    ],
+    "muscleKey": "obliques",
+    "type": "IsolationLift",
+    "sets": 3,
+    "reps": 12,
+    "weightKg": 17.5,
+    "blueprint": {
+      "tempo": "2-1-1-0",
+      "tempoDesc": "2s Resistance Return · 1s Diagonal Contraction · 1s Rotation Drive",
+      "peakTension": "Rotational Core & Lateral Oblique Wall",
+      "setupCue": "Set pulley at shoulder height. Pivot back foot and rotate through core, keeping arms extended.",
+      "checklist": [
+        "Arms held extended like a pendulum — arms do not pull",
+        "Initiate power from the hips and oblique rotation",
+        "Pivot rear foot to allow hips and spine to turn naturally",
+        "Control the cable return without letting weight stack slam"
+      ],
+      "pitfall": "Pulling with the arms/shoulders rather than generating torque through the oblique core wall."
+    }
+  },
+  {
+    "id": "pull_6",
+    "name": "Face Pulls (Rear Delts & Traps)",
+    "split": "Pull",
+    "targetMuscle": "Rear Delts & Upper Back",
+    "primaryMuscle": "Rear Delts & Traps",
+    "secondaryMuscles": [
+      "Rhomboids",
+      "Rotator Cuff"
+    ],
+    "muscleKey": "traps",
+    "type": "IsolationLift",
+    "sets": 3,
+    "reps": 15,
+    "weightKg": 25,
+    "blueprint": {
+      "tempo": "3-0-1-1",
+      "tempoDesc": "3s Scapular Stretch · 1s Face Drive · 1s External Rotation Hold",
+      "peakTension": "Rear Delts, Rhomboids, Trapezius & Rotator Cuff",
+      "setupCue": "Set cable at eye level with rope. Pull toward bridge of nose while externally rotating wrists backward.",
+      "checklist": [
+        "Thumbs pointing backward at the end of the pull",
+        "Elbows high and wide throughout the movement",
+        "1-second contraction holding the 'double bicep' pose",
+        "Allow scapulae to fully protract forward on the eccentric return"
+      ],
+      "pitfall": "Pulling downward into chest with internal rotation, ruining the rear delt focus."
+    }
   },
   {
     "id": "legs_1",
     "name": "Barbell Back Squat",
     "split": "Legs",
     "targetMuscle": "Quads & Glutes",
+    "primaryMuscle": "Quads & Glutes",
+    "secondaryMuscles": [
+      "Hamstrings",
+      "Core"
+    ],
+    "muscleKey": "quads",
     "type": "CompoundLift",
     "sets": 4,
     "reps": 8,
-    "weightKg": 90
+    "weightKg": 90,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Controlled Descent · 1s Parallel Pause · 1s Drive",
+      "peakTension": "Lengthened Quads & Gluteal Stretch",
+      "setupCue": "Bar on upper traps/rear delts. Feet shoulder-width, toes turned 15° out. Inhale & brace 360°.",
+      "checklist": [
+        "Deep 360° diaphragmatic breath & intra-abdominal brace",
+        "Break at hips and knees simultaneously",
+        "Knees track over the second toe throughout the descent",
+        "Hit parallel depth (hip crease below knee cap) with zero heel lift"
+      ],
+      "pitfall": "Knees caving inward (valgus collapse) or heels elevating off the floor."
+    }
   },
   {
     "id": "legs_2",
     "name": "Romanian Deadlift (RDL)",
     "split": "Legs",
     "targetMuscle": "Hamstrings",
+    "primaryMuscle": "Hamstrings",
+    "secondaryMuscles": [
+      "Glutes",
+      "Lower Back"
+    ],
+    "muscleKey": "hamstrings",
     "type": "CompoundLift",
     "sets": 3,
     "reps": 10,
-    "weightKg": 70
+    "weightKg": 70,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Hip Hinge · 1s Hamstring Stretch · 1s Glute Thrust",
+      "peakTension": "Lengthened Range (Hamstring & Glute Stretch)",
+      "setupCue": "Soft knee bend (20°), then push hips straight back to the wall. Do not squat the weight.",
+      "checklist": [
+        "Slight knee bend kept fixed throughout the entire rep",
+        "Push pelvis back as far as possible until hamstrings are taut",
+        "Bar stays glued to legs (skims down thighs past knees)",
+        "Reverse direction by driving hips forward into lockout"
+      ],
+      "pitfall": "Turning the hip hinge into a conventional squat or rounding the lower back."
+    }
   },
   {
     "id": "legs_3",
     "name": "Leg Press",
     "split": "Legs",
     "targetMuscle": "Quads",
+    "primaryMuscle": "Quads",
+    "secondaryMuscles": [
+      "Glutes",
+      "Calves"
+    ],
+    "muscleKey": "quads",
     "type": "CompoundLift",
     "sets": 3,
     "reps": 12,
-    "weightKg": 140
+    "weightKg": 140,
+    "blueprint": {
+      "tempo": "3-1-1-0",
+      "tempoDesc": "3s Controlled Negative · 1s Deep Flexion · 1s Drive",
+      "peakTension": "Mid-Range Quad Hypertrophy",
+      "setupCue": "Feet mid-platform. Pull handles tightly to lock pelvis firmly into the back seat pad.",
+      "checklist": [
+        "Tailbone and lower back glued firmly against seat (no butt wink)",
+        "Lower sled smoothly until knees form a clean 90° angle",
+        "1-second deep pause without bouncing the sled stops",
+        "Press through midfoot — never lock out knees into hyperextension"
+      ],
+      "pitfall": "Allowing lower back to peel off the pad at bottom, placing huge flexion torque on lumbar discs."
+    }
   },
   {
     "id": "legs_4",
     "name": "Standing Calf Raises",
     "split": "Legs",
     "targetMuscle": "Calves",
+    "primaryMuscle": "Calves",
+    "secondaryMuscles": [
+      "Tibialis Anterior"
+    ],
+    "muscleKey": "calves",
     "type": "IsolationLift",
     "sets": 4,
     "reps": 15,
-    "weightKg": 50
+    "weightKg": 50,
+    "blueprint": {
+      "tempo": "3-2-1-1",
+      "tempoDesc": "3s Achilles Stretch · 2s Deep Deficit Hold · 1s Ball Drive · 1s Peak Squeeze",
+      "peakTension": "Deep Stretch Deficit & Peak Plantarflexion",
+      "setupCue": "Knees completely straight to load Gastrocnemius. Balls of feet on step edge for full deficit.",
+      "checklist": [
+        "Knees locked straight to disengage Soleus and isolate Gastrocnemius",
+        "Sink heels into a deep deficit and hold a strict 2s stretch",
+        "Explode onto the balls of your big toes, not the outside edge",
+        "Hold peak contraction for 1 second before lowering"
+      ],
+      "pitfall": "Bouncing fast on the Achilles tendon spring instead of making calf muscles do the work."
+    }
+  },
+  {
+    "id": "legs_5",
+    "name": "Barbell Hip Thrust",
+    "split": "Legs",
+    "targetMuscle": "Glutes",
+    "primaryMuscle": "Glutes",
+    "secondaryMuscles": [
+      "Hamstrings",
+      "Core"
+    ],
+    "muscleKey": "glutes",
+    "type": "CompoundLift",
+    "sets": 4,
+    "reps": 10,
+    "weightKg": 85,
+    "blueprint": {
+      "tempo": "2-1-1-2",
+      "tempoDesc": "2s Controlled Drop · 1s Hinge Reset · 1s Drive · 2s Glute Squeeze",
+      "peakTension": "Shortened Range (Maximal Gluteus Maximus Lockout)",
+      "setupCue": "Bench pivot right beneath shoulder blades. Shins vertical (90° knee angle) at apex.",
+      "checklist": [
+        "Bench edge positioned directly below inferior angle of scapulae",
+        "Vertical shins at top of rep (if feet too far: hamstrings; if too close: quads)",
+        "Drive through heels into full posterior pelvic tilt",
+        "Maintain chin tucked & eyes forward to safeguard lumbar spine"
+      ],
+      "pitfall": "Looking up at ceiling and hyperextending lower back instead of squeezing glutes."
+    }
   }
 ]
