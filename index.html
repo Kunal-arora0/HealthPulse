@@ -35,11 +35,11 @@
     <!-- Header Stats & Badges -->
     <div class="header-stats">
       <div class="stat-pill streak" id="streakBadge" title="Gym Consistency Streak">
-        <span>🔥</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></svg>
         <span id="streakCountText">5 Day Streak</span>
       </div>
       <div class="stat-pill calories-pill" id="calBudgetBadge" title="Calorie Target">
-        <span>🎯</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
         <span id="headerCalBudget">2,200 kcal</span>
       </div>
       <!-- Profile Button -->
@@ -58,10 +58,12 @@
     <!-- Top View Switcher Navigation -->
     <nav class="tab-navigation" aria-label="Main Sections">
       <button class="tab-btn active" id="tabGymWorkouts" data-view="viewGymWorkouts">
-        <span>🏋️</span> Gym Workouts
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+        Gym Workouts
       </button>
       <button class="tab-btn" id="tabNutrition" data-view="viewNutrition">
-        <span>🍛</span> Indian Nutrition & Macros
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="M18 2v6a3 3 0 0 1-3 3 3 3 0 0 1-3-3V2"/><path d="M15 11v11"/><path d="M6 2v20"/><path d="M6 2a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3"/></svg>
+        Indian Nutrition & Macros
       </button>
     </nav>
 
@@ -75,17 +77,217 @@
         <!-- Left / Primary Column: Active Workout Session -->
         <div class="workout-main-panel">
 
-          <!-- Workout Split Selector Chips -->
-          <div class="split-selector-bar" role="tablist" aria-label="Workout Splits">
-            <button class="split-chip active" data-split="Push" id="splitPushBtn">
-              <span>🔥</span> Push Day (Chest / Shoulders / Triceps)
-            </button>
-            <button class="split-chip" data-split="Pull" id="splitPullBtn">
-              <span>⚡</span> Pull Day (Back / Biceps / Rear Delts)
-            </button>
-            <button class="split-chip" data-split="Legs" id="splitLegsBtn">
-              <span>🦵</span> Leg Day (Quads / Hamstrings / Calves)
-            </button>
+          <!-- Centered 3D Interactive Muscle Mind Map -->
+          <div class="glass-card muscle-map-card centered-map" id="muscleMapCard" style="margin-bottom: var(--space-lg);">
+            <div class="card-header muscle-map-header" style="margin-bottom: var(--space-xs); text-align: center; flex-direction: column; align-items: center; gap: 4px;">
+              <h2 class="card-title" style="display: flex; align-items: center; gap: 8px; font-size: 1.25rem;">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg text-accent"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+                3D Muscle Mind Map
+              </h2>
+              <p style="font-size: 0.8rem; color: var(--text-muted); max-width: 480px; margin: 0 auto;">
+                Rotate the 3D body and click any muscle (or select below) to inspect target exercises & progressive overload.
+              </p>
+            </div>
+
+            <div class="muscle-map-layout">
+              <!-- 3D Rotatable Anatomy Stage -->
+              <div class="anatomy-stage-wrapper">
+                <div class="view-switch-controls">
+                  <div class="view-switch-tabs">
+                    <button class="view-switch-btn active" id="btnViewFront" onclick="window.HealthPulseApp.rotateBody(0)">
+                      Front
+                    </button>
+                    <button class="view-switch-btn" id="btnViewBack" onclick="window.HealthPulseApp.rotateBody(180)">
+                      Back
+                    </button>
+                  </div>
+                  <button class="btn-flip-3d" id="btnFlip3D" onclick="window.HealthPulseApp.toggleBodyRotation()" title="Rotate 180°">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>
+                    Flip 180°
+                  </button>
+                </div>
+
+                <div class="rotator-stage" id="bodyRotatorStage" title="Drag left/right to rotate 3D body">
+                  <div class="rotator-flipper" id="bodyRotatorFlipper">
+                    <!-- FRONT VIEW (0deg) -->
+                    <div class="body-face body-face-front">
+                      <svg viewBox="0 0 220 320" class="muscle-anatomy-svg" id="muscleAnatomySvgFront">
+                        <!-- Silhouette / Base Underlay Front -->
+                        <g class="body-base">
+                          <ellipse cx="110" cy="28" rx="14" ry="18" class="body-outline" />
+                          <path d="M 103 44 L 103 54 L 117 54 L 117 44 Z" class="body-outline" />
+                          <path d="M 72 64 C 62 80, 58 110, 56 140 C 54 165, 52 185, 60 190 C 66 190, 72 170, 76 148 L 84 148 C 86 168, 86 210, 84 250 C 80 270, 78 295, 86 308 C 94 308, 96 295, 96 260 L 104 200 L 116 200 L 124 260 C 124 295, 126 308, 134 308 C 142 295, 140 270, 136 250 C 134 210, 134 168, 136 148 L 144 148 C 148 170, 154 190, 160 190 C 168 185, 166 165, 164 140 C 162 110, 158 80, 148 64 Z" class="body-silhouette" />
+                        </g>
+
+                        <!-- Shoulders (Anterior Deltoids) -->
+                        <g class="muscle-group" data-muscle="shoulders" onclick="window.HealthPulseApp.setMuscleFilter('shoulders')">
+                          <path d="M 88 56 C 72 58, 62 72, 66 88 C 74 88, 80 78, 86 70 Z" class="muscle-part" />
+                          <path d="M 132 56 C 148 58, 158 72, 154 88 C 146 88, 140 78, 134 70 Z" class="muscle-part" />
+                          <title>Shoulders (Deltoids)</title>
+                        </g>
+
+                        <!-- Chest / Pectorals -->
+                        <g class="muscle-group" data-muscle="chest" onclick="window.HealthPulseApp.setMuscleFilter('chest')">
+                          <path d="M 88 64 C 100 62, 107 68, 108 86 C 100 95, 87 95, 79 88 C 78 77, 82 68, 88 64 Z" class="muscle-part" />
+                          <path d="M 132 64 C 120 62, 113 68, 112 86 C 120 95, 133 95, 141 88 C 142 77, 138 68, 132 64 Z" class="muscle-part" />
+                          <title>Chest (Pectorals)</title>
+                        </g>
+
+                        <!-- Biceps -->
+                        <g class="muscle-group" data-muscle="biceps" onclick="window.HealthPulseApp.setMuscleFilter('biceps')">
+                          <path d="M 66 90 C 62 104, 63 118, 68 128 C 73 124, 75 110, 73 95 Z" class="muscle-part" />
+                          <path d="M 154 90 C 158 104, 157 118, 152 128 C 147 124, 145 110, 147 95 Z" class="muscle-part" />
+                          <title>Biceps</title>
+                        </g>
+
+                        <!-- Forearms -->
+                        <g class="muscle-group" data-muscle="forearms" onclick="window.HealthPulseApp.setMuscleFilter('forearms')">
+                          <path d="M 68 132 C 63 150, 59 168, 56 182 C 62 182, 68 168, 73 146 Z" class="muscle-part" />
+                          <path d="M 152 132 C 157 150, 161 168, 164 182 C 158 182, 152 168, 147 146 Z" class="muscle-part" />
+                          <title>Forearms</title>
+                        </g>
+
+                        <!-- Core / Abs (Rectus Abdominis) -->
+                        <g class="muscle-group" data-muscle="core" onclick="window.HealthPulseApp.setMuscleFilter('core')">
+                          <rect x="95" y="96" width="13" height="11" rx="2" class="muscle-part" />
+                          <rect x="112" y="96" width="13" height="11" rx="2" class="muscle-part" />
+                          <rect x="95" y="110" width="13" height="11" rx="2" class="muscle-part" />
+                          <rect x="112" y="110" width="13" height="11" rx="2" class="muscle-part" />
+                          <rect x="96" y="124" width="12" height="12" rx="2" class="muscle-part" />
+                          <rect x="112" y="124" width="12" height="12" rx="2" class="muscle-part" />
+                          <title>Abs / Rectus Abdominis</title>
+                        </g>
+
+                        <!-- Obliques (Lateral Abdominal Flanks) -->
+                        <g class="muscle-group" data-muscle="obliques" onclick="window.HealthPulseApp.setMuscleFilter('obliques')">
+                          <path d="M 78 96 C 75 112, 77 128, 85 142 C 92 142, 92 126, 92 110 C 92 98, 84 96, 78 96 Z" class="muscle-part" />
+                          <path d="M 142 96 C 145 112, 143 128, 135 142 C 128 142, 128 126, 128 110 C 128 98, 136 96, 142 96 Z" class="muscle-part" />
+                          <title>Obliques (Flanks & Waist)</title>
+                        </g>
+
+                        <!-- Quads (Quadriceps) -->
+                        <g class="muscle-group" data-muscle="quads" onclick="window.HealthPulseApp.setMuscleFilter('quads')">
+                          <path d="M 88 162 C 80 184, 79 212, 86 234 C 95 234, 102 210, 103 182 C 103 168, 96 164, 88 162 Z" class="muscle-part" />
+                          <path d="M 132 162 C 140 184, 141 212, 134 234 C 125 234, 118 210, 117 182 C 117 168, 124 164, 132 162 Z" class="muscle-part" />
+                          <title>Quads (Quadriceps)</title>
+                        </g>
+
+                        <!-- Calves (Front / Tibialis) -->
+                        <g class="muscle-group" data-muscle="calves" onclick="window.HealthPulseApp.setMuscleFilter('calves')">
+                          <path d="M 84 248 C 78 264, 80 284, 84 300 C 92 300, 96 282, 94 248 Z" class="muscle-part" />
+                          <path d="M 136 248 C 142 264, 140 284, 136 300 C 128 300, 124 282, 126 248 Z" class="muscle-part" />
+                          <title>Calves (Front View)</title>
+                        </g>
+                      </svg>
+                    </div>
+
+                    <!-- BACK VIEW (180deg) -->
+                    <div class="body-face body-face-back">
+                      <svg viewBox="0 0 220 320" class="muscle-anatomy-svg" id="muscleAnatomySvgBack">
+                        <!-- Silhouette / Base Underlay Back -->
+                        <g class="body-base">
+                          <ellipse cx="110" cy="28" rx="14" ry="18" class="body-outline" />
+                          <path d="M 103 44 L 103 54 L 117 54 L 117 44 Z" class="body-outline" />
+                          <path d="M 72 64 C 62 80, 58 110, 56 140 C 54 165, 52 185, 60 190 C 66 190, 72 170, 76 148 L 84 148 C 86 168, 86 210, 84 250 C 80 270, 78 295, 86 308 C 94 308, 96 295, 96 260 L 104 200 L 116 200 L 124 260 C 124 295, 126 308, 134 308 C 142 295, 140 270, 136 250 C 134 210, 134 168, 136 148 L 144 148 C 148 170, 154 190, 160 190 C 168 185, 166 165, 164 140 C 162 110, 158 80, 148 64 Z" class="body-silhouette" />
+                        </g>
+
+                        <!-- Trapezius (Traps / Upper Back) -->
+                        <g class="muscle-group" data-muscle="traps" onclick="window.HealthPulseApp.setMuscleFilter('traps')">
+                          <path d="M 110 44 L 126 52 L 138 68 L 122 96 L 110 112 L 98 96 L 82 68 L 94 52 Z" class="muscle-part" />
+                          <title>Trapezius (Traps / Upper Back)</title>
+                        </g>
+
+                        <!-- Rear Deltoids (Shoulders) -->
+                        <g class="muscle-group" data-muscle="shoulders" onclick="window.HealthPulseApp.setMuscleFilter('shoulders')">
+                          <path d="M 80 62 C 66 66, 62 80, 66 94 C 74 94, 80 84, 84 76 Z" class="muscle-part" />
+                          <path d="M 140 62 C 154 66, 158 80, 154 94 C 146 94, 140 84, 136 76 Z" class="muscle-part" />
+                          <title>Rear Deltoids (Shoulders)</title>
+                        </g>
+
+                        <!-- Triceps (Back of Arms) -->
+                        <g class="muscle-group" data-muscle="triceps" onclick="window.HealthPulseApp.setMuscleFilter('triceps')">
+                          <path d="M 64 92 C 58 106, 60 122, 66 132 C 72 128, 74 112, 72 96 Z" class="muscle-part" />
+                          <path d="M 156 92 C 162 106, 160 122, 154 132 C 148 128, 146 112, 148 96 Z" class="muscle-part" />
+                          <title>Triceps</title>
+                        </g>
+
+                        <!-- Latissimus Dorsi (Lats / V-Taper Wings) -->
+                        <g class="muscle-group" data-muscle="back" onclick="window.HealthPulseApp.setMuscleFilter('back')">
+                          <path d="M 84 88 C 76 102, 74 122, 82 136 C 92 136, 96 118, 98 100 Z" class="muscle-part" />
+                          <path d="M 136 88 C 144 102, 146 122, 138 136 C 128 136, 124 118, 122 100 Z" class="muscle-part" />
+                          <title>Latissimus Dorsi (Lats / Mid Back)</title>
+                        </g>
+
+                        <!-- Lower Back / Erector Spinae -->
+                        <g class="muscle-group" data-muscle="back" onclick="window.HealthPulseApp.setMuscleFilter('back')">
+                          <path d="M 98 116 L 122 116 L 126 142 L 94 142 Z" class="muscle-part" />
+                          <title>Lower Back (Erector Spinae)</title>
+                        </g>
+
+                        <!-- GLUTES (Gluteus Maximus / Medius) -->
+                        <g class="muscle-group" data-muscle="glutes" onclick="window.HealthPulseApp.setMuscleFilter('glutes')">
+                          <path d="M 110 144 C 96 144, 82 150, 80 166 C 78 182, 92 192, 108 190 C 110 180, 110 162, 110 144 Z" class="muscle-part" />
+                          <path d="M 110 144 C 124 144, 138 150, 140 166 C 142 182, 128 192, 112 190 C 110 180, 110 162, 110 144 Z" class="muscle-part" />
+                          <title>Glutes (Gluteus Maximus)</title>
+                        </g>
+
+                        <!-- Hamstrings (Posterior Thighs) -->
+                        <g class="muscle-group" data-muscle="hamstrings" onclick="window.HealthPulseApp.setMuscleFilter('hamstrings')">
+                          <path d="M 84 192 C 80 208, 80 228, 86 242 C 94 242, 102 224, 104 204 C 104 194, 96 192, 84 192 Z" class="muscle-part" />
+                          <path d="M 136 192 C 140 208, 140 228, 134 242 C 126 242, 118 224, 116 204 C 116 194, 124 192, 136 192 Z" class="muscle-part" />
+                          <title>Hamstrings (Back of Thighs)</title>
+                        </g>
+
+                        <!-- Calves (Gastrocnemius Diamond Bellies) -->
+                        <g class="muscle-group" data-muscle="calves" onclick="window.HealthPulseApp.setMuscleFilter('calves')">
+                          <path d="M 84 250 C 76 264, 76 284, 82 298 C 90 298, 96 282, 96 250 Z" class="muscle-part" />
+                          <path d="M 136 250 C 144 264, 144 284, 138 298 C 130 298, 124 282, 124 250 Z" class="muscle-part" />
+                          <title>Calves (Gastrocnemius)</title>
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rotation-hint">
+                  <span>Drag body to rotate 360°</span>
+                </div>
+              </div>
+
+              <!-- Muscle Target Intel & Interactive Chips -->
+              <div class="muscle-intel-panel">
+                <div class="muscle-focus-status">
+                  <span class="focus-pulse"></span>
+                  <span class="focus-label" id="muscleFocusTitle">Split Target: All Push Muscles</span>
+                </div>
+
+                <div class="muscle-quick-chips" id="muscleQuickChips">
+                  <!-- Dynamically rendered per split -->
+                </div>
+
+                <!-- Overload Session Summary Pill -->
+                <div class="overload-summary-bar">
+                  <div class="overload-metric">
+                    <span class="overload-metric-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                    </span>
+                    <div>
+                      <div class="overload-metric-val" id="overloadScoreVal">0 / 4 Targets</div>
+                      <div class="overload-metric-lbl">Overload Hits Today</div>
+                    </div>
+                  </div>
+                  <div class="overload-metric">
+                    <span class="overload-metric-icon">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h12"/><path d="M12 20V4"/><path d="m18 10-6-6-6 6"/></svg>
+                    </span>
+                    <div>
+                      <div class="overload-metric-val" id="peak1rmVal">-- kg</div>
+                      <div class="overload-metric-lbl">Today's Peak 1RM</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Active Session Exercise List -->
@@ -94,7 +296,7 @@
               <div>
                 <h2 class="card-title" id="activeSplitTitle">Push Day Workout</h2>
                 <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
-                  Log your sets, reps & weight. Finish each set to trigger your rest interval.
+                  Track working loads, personal records & progressive overload targets with zero spreadsheet hassle.
                 </p>
               </div>
               <button class="btn-quick-add" id="btnAddCustomExerciseBtn">
@@ -112,37 +314,29 @@
 
         <!-- Right / Secondary Column: Gym Analytics & Quick Rest Controller -->
         <aside class="workout-sidebar">
-          
-          <!-- Daily Gym Volume / Tonnage Card -->
-          <div class="glass-card" style="margin-bottom: var(--space-lg);">
+
+          <!-- Protein Streak Calendar -->
+          <div class="glass-card streak-card" style="margin-bottom: var(--space-lg);">
             <div class="card-header">
               <h3 class="card-title">
-                <span>⚡</span> Workout Volume
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg text-amber"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                Protein Streak
               </h3>
-              <span class="badge badge-saffron" id="tonnageBadge">Active Session</span>
+              <span class="badge badge-amber">Daily Goal</span>
             </div>
-
-            <div style="display: flex; flex-direction: column; gap: var(--space-sm); text-align: center; padding: var(--space-md) 0;">
-              <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Total Weight Lifted</span>
-              <div style="font-family: var(--font-display); font-size: 2.4rem; font-weight: 800; color: var(--text-primary); line-height: 1;">
-                <span id="totalTonnageNumber">0</span> <span style="font-size: 1.1rem; color: var(--accent-saffron);">kg</span>
-              </div>
-              <span style="font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px;" id="setsCompletedCountText">
-                0 / 0 Sets Completed
-              </span>
-            </div>
-
-            <div style="border-top: 1px solid var(--border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; font-size: 0.8rem;">
-              <span style="color: var(--text-muted);">Estimated Burn:</span>
-              <span style="font-weight: 700; color: #34D399;" id="estCalBurnText">0 kcal</span>
-            </div>
+            <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: var(--space-md);">
+              Days you hit your protein target — tracked automatically when you log food.
+            </p>
+            <!-- Dynamically populated by JS -->
+            <div id="proteinStreakCalendar"></div>
           </div>
 
           <!-- Quick Rest Timer Launcher -->
           <div class="glass-card">
             <div class="card-header">
               <h3 class="card-title">
-                <span>⏱️</span> Rest Interval
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg text-emerald"><circle cx="12" cy="14" r="8"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="14" x2="15" y2="11"/></svg>
+                Rest Interval
               </h3>
               <span class="badge badge-emerald">Audio Ready</span>
             </div>
@@ -159,6 +353,12 @@
             </div>
           </div>
 
+          <!-- Hidden volume tracking elements (still updated by JS for set logging) -->
+          <span id="tonnageBadge" style="display:none;"></span>
+          <span id="totalTonnageNumber" style="display:none;">0</span>
+          <span id="setsCompletedCountText" style="display:none;">0 / 0 Sets Completed</span>
+          <span id="estCalBurnText" style="display:none;">0 kcal</span>
+
         </aside>
 
       </div>
@@ -168,137 +368,228 @@
     <!-- =========================================================================
          VIEW 2: INDIAN NUTRITION & CALORIE TRACKER
          ========================================================================= -->
-    <section class="app-view" id="viewNutrition" aria-label="Indian Food & Calorie Tracker">
+    <section class="app-view" id="viewNutrition" aria-label="Indian Gym Nutrition & Macro Tracker">
       
-      <!-- Calorie & Macro Hero Overview -->
-      <div class="glass-card calorie-hero-card" style="margin-bottom: var(--space-xl);">
+      <!-- Header Banner -->
+      <div class="nutrition-os-header">
+        <div class="os-header-left">
+          <div class="os-badge">Indian Gym Nutrition & Macros</div>
+          <h2 class="os-title">Everyday Indian Meals & Macro Tracker</h2>
+          <p class="os-subtitle">
+            Verified ICMR-NIN macro tracking &middot; Relatable everyday Indian meals &middot; Complete protein bio-availability
+          </p>
+        </div>
+        <div class="os-header-meta">
+          <span class="diet-profile-tag" id="userDietBadge">
+            <span class="diet-indicator veg"></span> Indian Fitness Diet
+          </span>
+        </div>
+      </div>
+
+      <!-- Top Dual-Telemetry HUD Card -->
+      <div class="glass-card nutrition-telemetry-hero">
         
-        <!-- Circular SVG Calorie Ring -->
-        <div class="ring-container">
-          <svg class="ring-svg" viewBox="0 0 160 160">
-            <circle class="ring-bg" cx="80" cy="80" r="68"></circle>
-            <circle class="ring-fill ring-calories" id="calorieSvgCircle" cx="80" cy="80" r="68" stroke-dasharray="427.25" stroke-dashoffset="427.25"></circle>
-          </svg>
-          <div class="ring-center-text">
-            <span class="ring-center-value" id="caloriesRemainingNumber">2,200</span>
-            <span class="ring-center-label">kcal left</span>
+        <div class="dual-gauge-wrap">
+          <!-- Dial 1: Caloric Flux & Energy Balance Ring -->
+          <div class="gauge-card">
+            <div class="gauge-title-bar">
+              <span class="gauge-label">CALORIES REMAINING</span>
+              <span class="metabolic-status-pill" id="metabolicStatusPill">On Track</span>
+            </div>
+            <div class="ring-container">
+              <svg class="ring-svg" viewBox="0 0 160 160">
+                <circle class="ring-bg" cx="80" cy="80" r="68"></circle>
+                <circle class="ring-fill ring-calories" id="calorieSvgCircle" cx="80" cy="80" r="68" stroke-dasharray="427.25" stroke-dashoffset="427.25"></circle>
+              </svg>
+              <div class="ring-center-text">
+                <span class="ring-center-value" id="caloriesRemainingNumber">2,200</span>
+                <span class="ring-center-label">kcal left</span>
+                <span class="ring-sub-stat" id="consumedCalsSub">0 / 2,200 kcal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dial 2: Protein Target & Quality Meter -->
+          <div class="gauge-card">
+            <div class="gauge-title-bar">
+              <span class="gauge-label">DAILY PROTEIN TARGET</span>
+              <span class="mps-trigger-pill" id="mpsTriggersPill">Target: 150g</span>
+            </div>
+            <div class="ring-container">
+              <svg class="ring-svg" viewBox="0 0 160 160">
+                <circle class="ring-bg" cx="80" cy="80" r="68"></circle>
+                <circle class="ring-fill ring-protein-complete" id="proteinSvgCircle" cx="80" cy="80" r="68" stroke-dasharray="427.25" stroke-dashoffset="427.25"></circle>
+              </svg>
+              <div class="ring-center-text">
+                <span class="ring-center-value text-emerald" id="consumedProteinHero">0g</span>
+                <span class="ring-center-label">Protein</span>
+                <span class="ring-sub-stat" id="proteinTargetSub">Target: 150g</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Macro Breakdown Progress Bars -->
-        <div class="macro-grid">
+        <!-- Macro Breakdown & Cooking Oil Precision Bars -->
+        <div class="macro-telemetry-grid">
           
-          <!-- Protein -->
-          <div class="macro-item">
-            <div class="macro-item-header">
-              <span class="macro-name">🥩 Protein (Target: <span id="targetProteinVal">150</span>g)</span>
-              <span class="macro-target"><span id="consumedProteinVal">0</span>g</span>
+          <!-- Protein with Complete vs Plant Sub-bar -->
+          <div class="macro-telemetry-item">
+            <div class="macro-telemetry-header">
+              <span class="m-title">Total Protein</span>
+              <span class="m-val"><strong id="consumedProteinVal">0</strong> / <span id="targetProteinVal">150</span>g</span>
             </div>
             <div class="macro-bar-track">
               <div class="macro-bar-fill fill-protein" id="proteinBarFill" style="width: 0%;"></div>
             </div>
+            <div class="macro-sub-legend">
+              <span class="legend-dot complete"></span> <span id="completeProteinText">0g Complete Bioavailable</span>
+              <span class="legend-sep">&middot;</span>
+              <span class="legend-dot plant"></span> <span id="plantProteinText">0g Plant Protein</span>
+            </div>
           </div>
 
           <!-- Carbs -->
-          <div class="macro-item">
-            <div class="macro-item-header">
-              <span class="macro-name">🍚 Carbs (Target: <span id="targetCarbsVal">220</span>g)</span>
-              <span class="macro-target"><span id="consumedCarbsVal">0</span>g</span>
+          <div class="macro-telemetry-item">
+            <div class="macro-telemetry-header">
+              <span class="m-title">Carbohydrates</span>
+              <span class="m-val"><strong id="consumedCarbsVal">0</strong> / <span id="targetCarbsVal">220</span>g</span>
             </div>
             <div class="macro-bar-track">
               <div class="macro-bar-fill fill-carbs" id="carbsBarFill" style="width: 0%;"></div>
             </div>
+            <div class="macro-sub-legend">
+              <span id="carbsRatioText">P:C Ratio: 0.00 &middot; Glycogen & Energy Fuel</span>
+            </div>
           </div>
 
           <!-- Fats -->
-          <div class="macro-item">
-            <div class="macro-item-header">
-              <span class="macro-name">🥑 Fats (Target: <span id="targetFatsVal">60</span>g)</span>
-              <span class="macro-target"><span id="consumedFatsVal">0</span>g</span>
+          <div class="macro-telemetry-item">
+            <div class="macro-telemetry-header">
+              <span class="m-title">Dietary Fats</span>
+              <span class="m-val"><strong id="consumedFatsVal">0</strong> / <span id="targetFatsVal">60</span>g</span>
             </div>
             <div class="macro-bar-track">
               <div class="macro-bar-fill fill-fats" id="fatsBarFill" style="width: 0%;"></div>
             </div>
+            <div class="macro-sub-legend">
+              <span class="fat-legend-sub" id="fatLegendSub">Essential Lipids & Hormone Balance</span>
+            </div>
           </div>
 
         </div>
 
       </div>
 
-      <!-- Desi Protein Gap Closer / Booster Banner -->
-      <div class="booster-banner" id="desiBoosterBanner">
-        <div class="booster-content">
-          <h3><span>💡</span> Desi Protein Gap Closer</h3>
-          <p id="boosterNoticeText">You need more protein to hit your 150g gym goal. Tap any Indian booster to quick log:</p>
+      <!-- Everyday Indian Meals Section -->
+      <div class="everyday-meals-section">
+        <div class="timeline-section-header">
+          <div>
+            <h3 class="timeline-section-title">Daily Meals & Portion Log</h3>
+            <p class="timeline-section-subtitle">
+              Log your regular meals with verified ICMR-NIN nutrition and macro portion tracking.
+            </p>
+          </div>
         </div>
-        <div class="booster-chips" id="boosterChipsContainer">
-          <!-- Populated dynamically via JS -->
-        </div>
-      </div>
 
-      <!-- Meal Buckets (Breakfast, Lunch, Pre/Post Workout, Dinner) -->
-      <div class="meal-bucket-list" id="mealBucketsContainer">
-        
-        <!-- Breakfast -->
-        <div class="meal-bucket" data-meal="Breakfast">
-          <div class="meal-bucket-header">
-            <div class="meal-bucket-title">
-              <span>🌅</span> Breakfast
+        <div class="everyday-meal-cards" id="everydayMealCardsContainer">
+          
+          <!-- Meal 1: Breakfast -->
+          <div class="everyday-meal-card" data-meal="Breakfast">
+            <div class="meal-card-top">
+              <div class="meal-title-group">
+                <span class="meal-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="m4.93 10.93 1.41 1.41"/><path d="M20 18h2"/><path d="M2 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m8 6 4-4 4 4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>
+                </span>
+                <div>
+                  <div class="meal-title">Breakfast (Nashta)</div>
+                  <div class="meal-timing-tag">Morning Fuel · Oats, Eggs, Paneer, Chilla</div>
+                </div>
+              </div>
+              <div class="meal-action-group">
+                <span class="meal-summary-pill" id="mealSummary_Breakfast">0 kcal · 0g P</span>
+                <button class="btn-log-meal" onclick="window.HealthPulseApp.openFoodSearchModal('Breakfast')">
+                  + Log Food
+                </button>
+              </div>
             </div>
-            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Breakfast')">
-              + Log Food
-            </button>
-          </div>
-          <div class="meal-items-list" id="mealItemsBreakfast">
-            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
-          </div>
-        </div>
-
-        <!-- Lunch -->
-        <div class="meal-bucket" data-meal="Lunch">
-          <div class="meal-bucket-header">
-            <div class="meal-bucket-title">
-              <span>☀️</span> Lunch (Indian Staples)
+            <div class="meal-items-list" id="mealItemsBreakfast">
+              <p class="empty-meal-text">No breakfast logged yet. Tap "+ Log Food" to add eggs, oats, or chilla.</p>
             </div>
-            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Lunch')">
-              + Log Food
-            </button>
           </div>
-          <div class="meal-items-list" id="mealItemsLunch">
-            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
-          </div>
-        </div>
 
-        <!-- Pre / Post Workout -->
-        <div class="meal-bucket" data-meal="PrePostWorkout">
-          <div class="meal-bucket-header">
-            <div class="meal-bucket-title">
-              <span>⚡</span> Pre & Post Workout Fuel
+          <!-- Meal 2: Lunch -->
+          <div class="everyday-meal-card" data-meal="Lunch">
+            <div class="meal-card-top">
+              <div class="meal-title-group">
+                <span class="meal-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                </span>
+                <div>
+                  <div class="meal-title">Lunch (Dopahar Ka Khana)</div>
+                  <div class="meal-timing-tag">Indian Staples · Dal, Roti, Rice, Sabzi, Paneer/Chicken</div>
+                </div>
+              </div>
+              <div class="meal-action-group">
+                <span class="meal-summary-pill" id="mealSummary_Lunch">0 kcal · 0g P</span>
+                <button class="btn-log-meal" onclick="window.HealthPulseApp.openFoodSearchModal('Lunch')">
+                  + Log Food
+                </button>
+              </div>
             </div>
-            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('PrePostWorkout')">
-              + Log Food
-            </button>
-          </div>
-          <div class="meal-items-list" id="mealItemsPrePostWorkout">
-            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
-          </div>
-        </div>
-
-        <!-- Dinner -->
-        <div class="meal-bucket" data-meal="Dinner">
-          <div class="meal-bucket-header">
-            <div class="meal-bucket-title">
-              <span>🌙</span> Dinner
+            <div class="meal-items-list" id="mealItemsLunch">
+              <p class="empty-meal-text">No lunch logged yet. Tap "+ Log Food" to add Dal Tadka, Rotis, Rice, or Sabzi.</p>
             </div>
-            <button class="btn-quick-add" onclick="window.HealthPulseApp.openFoodSearchModal('Dinner')">
-              + Log Food
-            </button>
           </div>
-          <div class="meal-items-list" id="mealItemsDinner">
-            <p style="font-size: 0.8rem; color: var(--text-muted); padding: 4px 0;">No foods logged yet.</p>
-          </div>
-        </div>
 
+          <!-- Meal 3: Evening Chai & Snacks -->
+          <div class="everyday-meal-card" data-meal="Snacks">
+            <div class="meal-card-top">
+              <div class="meal-title-group">
+                <span class="meal-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" x2="6" y1="2" y2="4"/><line x1="10" x2="10" y1="2" y2="4"/><line x1="14" x2="14" y1="2" y2="4"/></svg>
+                </span>
+                <div>
+                  <div class="meal-title">Evening Chai & Snacks (5 PM)</div>
+                  <div class="meal-timing-tag">Chai, Makhana, Roasted Chana, Sprouts, Sattu</div>
+                </div>
+              </div>
+              <div class="meal-action-group">
+                <span class="meal-summary-pill" id="mealSummary_Snacks">0 kcal · 0g P</span>
+                <button class="btn-log-meal" onclick="window.HealthPulseApp.openFoodSearchModal('Snacks')">
+                  + Log Food
+                </button>
+              </div>
+            </div>
+            <div class="meal-items-list" id="mealItemsSnacks">
+              <p class="empty-meal-text">No evening snacks logged yet. Track your chai or add roasted makhana/sprouts.</p>
+            </div>
+          </div>
+
+          <!-- Meal 4: Dinner -->
+          <div class="everyday-meal-card" data-meal="Dinner">
+            <div class="meal-card-top">
+              <div class="meal-title-group">
+                <span class="meal-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </span>
+                <div>
+                  <div class="meal-title">Dinner (Raat Ka Khana)</div>
+                  <div class="meal-timing-tag">Night Recovery · Paneer, Dahi, Haldi Milk, Light Staples</div>
+                </div>
+              </div>
+              <div class="meal-action-group">
+                <span class="meal-summary-pill" id="mealSummary_Dinner">0 kcal · 0g P</span>
+                <button class="btn-log-meal" onclick="window.HealthPulseApp.openFoodSearchModal('Dinner')">
+                  + Log Food
+                </button>
+              </div>
+            </div>
+            <div class="meal-items-list" id="mealItemsDinner">
+              <p class="empty-meal-text">No dinner logged yet. Tap "+ Log Food" to add dinner or nighttime haldi milk.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </section>
@@ -310,7 +601,10 @@
        ========================================================================= -->
   <div class="rest-timer-modal" id="restTimerModal" role="dialog" aria-modal="true">
     <div class="timer-header">
-      <h4><span>⏱️</span> Rest Interval</h4>
+      <h4>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><circle cx="12" cy="14" r="8"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="14" x2="15" y2="11"/></svg>
+        Rest Interval
+      </h4>
       <button class="timer-close-btn" id="closeRestTimerBtn" aria-label="Close timer">&times;</button>
     </div>
 
@@ -327,10 +621,10 @@
 
     <div class="timer-controls">
       <button class="btn-timer-action btn-timer-play" id="btnToggleTimer">
-        <span id="timerPlayIcon">⏸️</span> <span id="timerPlayText">Pause</span>
+        <span id="timerPlayIcon">⏸</span> <span id="timerPlayText">Pause</span>
       </button>
       <button class="btn-timer-action btn-timer-skip" id="btnSkipTimer">
-        ⏭️ Skip
+        Skip
       </button>
     </div>
   </div>
@@ -342,22 +636,25 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="card-title">
-          <span>🔍</span> Search Indian Gym Diet
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span id="foodSearchModalTitle">Search Indian Gym Diet</span>
         </h3>
         <button class="timer-close-btn" id="closeFoodModalBtn" aria-label="Close modal">&times;</button>
       </div>
 
       <div class="modal-body">
         <div class="search-input-box">
-          <span>🔎</span>
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" id="foodSearchInput" placeholder="Search roti, dal, paneer, eggs, sattu, whey...">
         </div>
 
         <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
           <span class="badge badge-emerald" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('All')">All</span>
-          <span class="badge badge-saffron" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('High-Protein')">High-Protein</span>
+          <span class="badge badge-blue" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('High-Protein')">High-Protein</span>
           <span class="badge badge-cyan" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Desi Staple')">Desi Staples</span>
-          <span class="badge badge-saffron" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Snacks')">Snacks</span>
+          <span class="badge badge-amber" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Snacks')">Snacks</span>
+          <span class="badge badge-emerald" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Veg')"><span class="diet-indicator veg"></span> Vegetarian</span>
+          <span class="badge badge-danger" style="cursor: pointer;" onclick="window.HealthPulseApp.filterFoodModal('Non-Veg')"><span class="diet-indicator non-veg"></span> Non-Vegetarian</span>
         </div>
 
         <!-- Food items list -->
@@ -375,7 +672,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="card-title">
-          <span>🏋️‍♂️</span> Add Gym Exercise
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+          Add Gym Exercise
         </h3>
         <button class="timer-close-btn" id="closeExerciseModalBtn" aria-label="Close modal">&times;</button>
       </div>
@@ -446,7 +744,8 @@
     <div class="modal-content" style="max-width: 520px;">
       <div class="modal-header">
         <h3 class="card-title" id="profileModalTitle">
-          <span>👤</span> <span id="profileModalGreeting">Your Fitness Profile</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="profileModalGreeting">Your Fitness Profile</span>
         </h3>
         <button class="timer-close-btn" id="closeProfileModalBtn" aria-label="Close profile">&#x2715;</button>
       </div>
@@ -502,15 +801,15 @@
           <div class="form-group">
             <label for="profileGoal">Primary Goal</label>
             <select class="form-control" id="profileGoal">
-              <option value="hypertrophy">💪 Muscle Gain / Hypertrophy (+300 kcal surplus)</option>
-              <option value="maintenance">⚖️ Maintenance (TDEE)</option>
-              <option value="weightloss">🔥 Fat Loss (-500 kcal deficit)</option>
+              <option value="hypertrophy">Muscle Gain / Hypertrophy (+300 kcal surplus)</option>
+              <option value="maintenance">Maintenance (TDEE)</option>
+              <option value="weightloss">Fat Loss (-500 kcal deficit)</option>
             </select>
           </div>
 
           <!-- Live computed targets preview -->
           <div class="profile-targets-preview" id="profileTargetsPreview" style="display:none;">
-            <div class="targets-preview-title">📊 Your Calculated Targets</div>
+            <div class="targets-preview-title">Calculated Fitness Targets</div>
             <div class="targets-preview-grid">
               <div class="target-stat"><span id="prevBMI">—</span><small>BMI</small></div>
               <div class="target-stat"><span id="prevBMR">—</span><small>BMR</small></div>
